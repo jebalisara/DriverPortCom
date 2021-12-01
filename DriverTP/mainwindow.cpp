@@ -23,10 +23,28 @@ MainWindow::MainWindow(QWidget *parent)
     m_runButton(new QPushButton(tr("Start")))
 {
     ui->setupUi(this);
+    driver = new driver();
 }
 
 MainWindow::~MainWindow()
 {
+    driver -> closePort();
     delete ui;
 }
+void MainWindow :: button_ON_1_click()
+{
+    driver-> write(ui->MessageLineEdit->text());
+}
+
+void MainWindow :: button_ON_2_click()
+{
+    driver -> closePort();
+    ui -> statusLabel-> setText();
+}
+
+void MainWindow :: button_ON_3_click()
+{
+    driver -> read();
+}
+
 
